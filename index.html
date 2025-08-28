@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go To Pelaminan - Tabungan Pernikahan Interaktif</title>
+    <!-- Menghubungkan file CSS untuk styling -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Mengimpor Font Awesome untuk ikon (jika diperlukan, untuk emoji bisa pakai unicode langsung) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Bilah Navigasi Utama -->
+    <nav class="navbar">
+        <a href="#beranda" class="nav-item active" data-page="beranda">Beranda Pernikahan</a>
+        <a href="#patungan" class="nav-item" data-page="patungan">Patungan Pelaminan</a>
+        <a href="#rekap" class="nav-item" data-page="rekap">Rekap Dana</a>
+    </nav>
+
+    <!-- Konten Utama Website -->
+    <main class="container">
+        
+        <!-- Halaman Beranda Pernikahan -->
+        <section id="beranda" class="page active">
+            <h2>Go To Pelaminan!</h2>
+            <div class="card emoji-card">
+                <!-- Emoji 2 orang sesuai permintaan untuk pasangan -->
+                <span role="img" aria-label="Pengantin Pria">🤵‍♂️</span>
+                <span role="img" aria-label="Pengantin Wanita">👰‍♀️</span>
+            </div>
+            <div class="card chart-card">
+                <h3>Progres Dana Pernikahan per Bagian</h3>
+                <!-- Canvas untuk menampilkan grafik -->
+                <canvas id="targetChart"></canvas>
+                <div class="loading-indicator" id="chartLoading">Memuat progres dana...</div>
+                <div class="empty-state" id="chartEmptyState">Belum ada bagian anggaran pernikahan untuk grafik.</div>
+            </div>
+
+            <div class="card summary-card">
+                <h3>Ringkasan Kontribusi Individu</h3>
+                <div class="individual-summary">
+                    <p><strong>Total Kontribusi My Boy:</strong> <span id="myBoyContribution">Rp 0</span></p>
+                    <p><strong>Total Kontribusi My Girl:</strong> <span id="myGirlContribution">Rp 0</span></p>
+                    <p><strong>Total Kontribusi Keseluruhan:</strong> <span id="overallContribution">Rp 0</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Halaman Patungan Pelaminan -->
+        <section id="patungan" class="page">
+            <h2>Patungan Menuju Pelaminan</h2>
+            <div class="card form-card">
+                <h3>Tambah Bagian Anggaran Baru</h3>
+                <!-- Form untuk menambah bagian anggaran baru (misal: "Sewa Gedung") -->
+                <form id="partForm">
+                    <input type="hidden" id="partId"> <!-- Untuk menyimpan ID saat mode edit -->
+                    <div class="form-group">
+                        <label for="partName">Nama Bagian Anggaran:</label>
+                        <input type="text" id="partName" placeholder="Contoh: Sewa Gedung, Katering, Cincin" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="partTargetAmount">Target Dana untuk Bagian Ini:</label>
+                        <input type="number" id="partTargetAmount" placeholder="Jumlah target" required min="0">
+                    </div>
+                    <button type="submit" class="btn primary-btn" id="savePartBtn">Tambah Bagian Anggaran</button>
+                    <button type="button" class="btn secondary-btn" id="cancelPartEditBtn" style="display: none;">Batal Edit</button>
+                </form>
+            </div>
+
+            <!-- Bagian ini diganti dengan tampilan kartu -->
+            <div class="card parts-overview-card">
+                <h3>Ringkasan Bagian Anggaran</h3>
+                <div id="partsCardsContainer" class="parts-cards-container">
+                    <!-- Kartu-kartu bagian anggaran akan dimasukkan di sini oleh JavaScript -->
+                </div>
+                <div class="loading-indicator" id="partsCardsLoading">Memuat bagian anggaran...</div>
+                <div class="empty-state" id="partsCardsEmptyState">Belum ada bagian anggaran pernikahan yang dibuat.</div>
+            </div>
+
+            <!-- Form Kontribusi Baru - di bawah ringkasan bagian anggaran -->
+            <div class="card contribution-form-card">
+                <h3>Tambah Kontribusi/Pengeluaran Dana</h3>
+                <form id="contributionForm">
+                    <div class="form-group">
+                        <label for="selectPart">Pilih Bagian Anggaran:</label>
+                        <select id="selectPart" required>
+                            <option value="">-- Pilih Bagian --</option>
+                            <!-- Opsi akan diisi oleh JavaScript -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contributionAmount">Jumlah Dana:</label>
+                        <input type="number" id="contributionAmount" placeholder="Jumlah masuk/keluar" required min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="contributionType">Jenis Transaksi:</label>
+                        <select id="contributionType" required>
+                            <option value="masuk">Pemasukan (Kontribusi)</option>
+                            <option value="keluar">Pengeluaran (Biaya)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="saverName">Penyetor:</label>
+                        <select id="saverName" required>
+                            <option value="">-- Pilih Penyetor --</option>
+                            <option value="my_boy">My Boy</option>
+                            <option value="my_girl">My Girl</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn primary-btn" id="saveContributionBtn">Simpan Dana</button>
+                </form>
+            </div>
+
+        </section>
+
+        <!-- Halaman Rekap Dana -->
+        <section id="rekap" class="page">
+            <h2>Rekapitulasi Dana Pernikahan</h2>
+            <div class="card table-card">
+                <h3>Seluruh Histori Transaksi Dana Pernikahan</h3>
+                <!-- Tabel untuk menampilkan rekapitulasi transaksi historis -->
+                <div class="table-responsive">
+                    <table id="recapTable">
+                        <thead>
+                            <tr>
+                                <th class="col-rekap-tanggal">Tanggal</th>
+                                <th class="col-rekap-bagian">Bagian Anggaran</th>
+                                <th class="col-rekap-jenis">Jenis</th>
+                                <th class="col-rekap-jumlah">Jumlah</th>
+                                <th class="col-rekap-penyetor">Penyetor</th>
+                                <th class="col-rekap-aksi">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recapTableBody">
+                            <!-- Data rekap transaksi akan dimasukkan di sini oleh JavaScript -->
+                        </tbody>
+                    </table>
+                    <div class="loading-indicator" id="recapTableLoading">Memuat rekap transaksi...</div>
+                    <div class="empty-state" id="recapTableEmptyState">Belum ada transaksi dana pernikahan.</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal Konfirmasi Universal -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <p id="modalMessage" class="modal-message"></p>
+            <div class="modal-actions">
+                <button class="btn primary-btn" id="modalConfirmBtn">Ya</button>
+                <button class="btn secondary-btn" id="modalCancelBtn">Batal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Integrasi Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    
+    <!-- Integrasi Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    
+    <!-- File JavaScript kustom Anda -->
+    <script src="script.js"></script>
+</body>
+</html>

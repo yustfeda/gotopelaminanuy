@@ -1,0 +1,649 @@
+/* Styling umum untuk seluruh halaman, menggunakan font kecil */
+body {
+    font-family: 'Inter', sans-serif; /* Menggunakan Inter sesuai instruksi, jika tidak tersedia akan fallback ke sans-serif */
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5; /* Warna latar belakang lembut */
+    color: #333; /* Warna teks utama */
+    font-size: 12px; /* Ukuran font kecil sesuai permintaan */
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased; /* Perhalus teks untuk tampilan yang lebih baik */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Styling untuk container utama */
+.container {
+    max-width: 960px; /* Lebar maksimum untuk desktop */
+    margin: 20px auto; /* Pusatkan container */
+    padding: 0 15px; /* Padding samping */
+}
+
+/* Styling untuk card (kotak konten) */
+.card {
+    background-color: #ffffff;
+    border-radius: 12px; /* Sudut membulat */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Efek bayangan lembut */
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Styling untuk judul */
+h2, h3 {
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.4em; /* Ukuran judul relatif kecil */
+}
+h3 {
+    font-size: 1.2em;
+}
+
+/* Styling untuk navigasi */
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #E91E63; /* Warna pink/maroon untuk tema pernikahan */
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 15px 15px; /* Sudut bawah membulat */
+}
+
+.navbar .nav-item {
+    text-decoration: none;
+    color: #fff; /* Warna teks putih */
+    padding: 10px 20px;
+    margin: 0 8px;
+    border-radius: 25px; /* Tombol navigasi membulat */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1.1em; /* Ukuran font item navigasi */
+    font-weight: 500;
+}
+
+.navbar .nav-item:hover {
+    background-color: #C2185B; /* Warna hover sedikit lebih gelap */
+    transform: translateY(-2px); /* Efek angkat saat hover */
+}
+
+.navbar .nav-item.active {
+    background-color: #AD1457; /* Warna lebih gelap untuk item aktif */
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling halaman */
+.page {
+    display: none; /* Sembunyikan semua halaman secara default */
+}
+
+.page.active {
+    display: block; /* Tampilkan halaman yang aktif */
+}
+
+/* Styling untuk card emoji di beranda */
+.emoji-card {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #fce4ec; /* Warna latar belakang cerah untuk tema pernikahan */
+    border: 1px solid #f8bbd0;
+}
+
+.emoji-card span {
+    font-size: 4em; /* Ukuran emoji besar */
+    margin: 0 15px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.emoji-card span:hover {
+    transform: scale(1.1); /* Efek sedikit membesar saat hover */
+}
+
+
+/* Styling untuk form */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #34495e;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+    width: calc(100% - 20px); /* Kurangi padding untuk lebar penuh */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Sudut input membulat */
+    font-size: 1em; /* Ukuran font input */
+    box-sizing: border-box; /* Pastikan padding tidak menambah lebar total */
+}
+
+/* Styling tombol */
+.btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px; /* Sudut tombol membulat */
+    cursor: pointer;
+    font-size: 1.0em; /* Ukuran font tombol */
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-right: 10px;
+}
+
+.primary-btn {
+    background-color: #4CAF50; /* Warna hijau primer */
+    color: #fff;
+}
+
+.primary-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-1px);
+}
+
+.secondary-btn {
+    background-color: #6c757d; /* Warna abu-abu sekunder */
+    color: #fff;
+}
+
+.secondary-btn:hover {
+    background-color: #5a6268;
+    transform: translateY(-1px);
+}
+
+/* Styling untuk tabel secara umum */
+.table-responsive {
+    overflow-x: auto; /* Ini kunci untuk scroll samping di desktop dan mobile */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling di iOS */
+}
+
+table {
+    width: 100%; /* Tabel akan mencoba mengisi lebar kontainer */
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 15px;
+    table-layout: auto; /* Lebar kolom otomatis sesuai konten */
+    min-width: 600px; /* Minimal lebar tabel di desktop */
+}
+
+table th, table td {
+    padding: 10px 15px; /* Padding sedikit lebih rapat */
+    text-align: left;
+    border-bottom: 1px solid #f2f2f2;
+    font-size: 0.95em;
+    white-space: nowrap; /* Teks tidak memisah baris secara default */
+    box-sizing: border-box;
+}
+
+table th {
+    background-color: #e9ecef;
+    font-weight: 700;
+    color: #495057;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Tombol aksi dalam tabel */
+.action-btn {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    margin-right: 5px;
+    transition: opacity 0.2s ease;
+}
+
+.action-btn:last-child {
+    margin-right: 0;
+}
+
+.edit-btn {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.edit-btn:hover {
+    background-color: #e0a800;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Indikator loading dan pesan kosong */
+.loading-indicator, .empty-state {
+    text-align: center;
+    color: #888;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* Styling untuk Chart */
+.chart-card {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.chart-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+#targetChart {
+    max-height: 250px;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Styling untuk Ringkasan Kontribusi Individu */
+.summary-card {
+    margin-top: 25px;
+    background-color: #e3f2fd; /* Warna biru muda */
+    border: 1px solid #90caf9;
+    padding: 25px;
+}
+.summary-card h3 {
+    color: #1976d2; /* Warna biru lebih gelap */
+}
+.individual-summary {
+    text-align: center;
+}
+.individual-summary p {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between; /* Untuk menyelaraskan strong dan span */
+    align-items: center;
+    padding: 5px 15px; /* Padding agar tidak terlalu mepet */
+    border-bottom: 1px dotted #bbdefb; /* Garis putus-putus */
+}
+.individual-summary p:last-child {
+    border-bottom: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #0d47a1;
+}
+.individual-summary p span {
+    font-weight: 600;
+    color: #424242;
+}
+
+
+/* --- Modal Styling --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 25px 30px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-message {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.modal-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* --- TAMPILAN BAGIAN ANGGARAN (PATUNGAN PELAMINAN) SEKARANG BERUPA KARTU --- */
+.parts-overview-card {
+    padding: 25px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.parts-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Kolom responsif */
+    gap: 20px; /* Jarak antar kartu */
+    margin-top: 20px;
+}
+
+.part-card {
+    background-color: #fdf6f7; /* Latar belakang cerah */
+    border: 1px solid #f8bbd0;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.part-card:hover {
+    transform: translateY(-5px); /* Efek angkat saat hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.part-card h4 {
+    color: #AD1457; /* Warna judul kartu */
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.part-card p {
+    font-size: 0.95em;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.part-card p strong {
+    color: #2c3e50;
+    font-weight: 700;
+}
+.part-card p span {
+    color: #555;
+    font-weight: 500;
+}
+
+/* Progress bar di dalam kartu */
+.part-card .progress-bar-container {
+    margin-top: 15px;
+    margin-bottom: 10px; /* Jarak dari tombol */
+    height: 20px; /* Sedikit lebih tinggi */
+}
+.part-card .progress-text {
+    font-size: 0.9em;
+    color: #333;
+}
+.part-card .progress-bar-fill {
+    background-color: #E91E63; /* Warna progres bar jadi pink */
+}
+
+.part-card-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end; /* Tombol ke kanan */
+    gap: 8px;
+}
+.part-card-actions .action-btn {
+    padding: 8px 12px;
+    font-size: 0.9em;
+}
+
+/* Form Kontribusi di bawah ringkasan anggaran */
+.contribution-form-card {
+    padding: 25px;
+    background-color: #e0f7fa;
+    border: 1px solid #b2ebf2;
+    margin-top: 25px;
+}
+.contribution-form-card h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+.contribution-form-card .form-group select,
+.contribution-form-card .form-group input[type="number"] {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.contribution-form-card .btn {
+    width: 100%;
+    margin-top: 15px;
+}
+
+
+/* --- Styling Tabel Rekap Dana (Elegan dan Menyamping) --- */
+#recapTable {
+    border: 1px solid #c2185b; /* Border utama tabel dengan warna pernikahan */
+    border-radius: 12px;
+    overflow: hidden; /* Pastikan border-radius terlihat pada header/footer */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Bayangan lembut */
+}
+
+#recapTable th, #recapTable td {
+    padding: 12px 18px; /* Padding yang lebih baik untuk tampilan elegan */
+    font-size: 0.9em;
+    border-bottom: 1px solid #f8bbd0; /* Garis pemisah lebih halus, warna pernikahan */
+    /* white-space: nowrap; akan diatur di aturan umum table */
+}
+
+#recapTable th {
+    background-color: #fce4ec; /* Latar belakang header ringan */
+    color: #AD1457; /* Teks header warna pernikahan gelap */
+    font-weight: 800; /* Lebih tebal */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #AD1457; /* Border bawah header lebih tebal */
+    position: sticky; /* Agar header tetap terlihat saat scroll horizontal */
+    top: 0;
+    z-index: 2; /* Pastikan di atas tbody hover */
+}
+
+#recapTable tbody tr {
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#recapTable tbody tr:hover {
+    background-color: #fff0f5; /* Latar belakang hover lebih cerah */
+    transform: translateY(-2px); /* Efek angkat */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Bayangan saat hover */
+    cursor: pointer;
+    z-index: 1; /* Pastikan di atas sibling (agar shadow terlihat) */
+    position: relative; /* Diperlukan untuk z-index */
+}
+
+/* Lebar kolom default untuk #recapTable (desktop) */
+#recapTable .col-rekap-tanggal { min-width: 120px; } /* Memberi lebar min agar tanggal tidak terlalu rapat */
+#recapTable .col-rekap-bagian { min-width: 180px; }
+#recapTable .col-rekap-jenis { min-width: 90px; }
+#recapTable .col-rekap-jumlah { min-width: 120px; }
+#recapTable .col-rekap-penyetor { min-width: 100px; }
+#recapTable .col-rekap-aksi { min-width: 80px; }
+
+
+/* --- Responsif untuk Handphone (layar <= 768px) --- */
+@media (max-width: 768px) {
+    body {
+        font-size: 11px;
+    }
+
+    .container {
+        margin: 10px auto;
+        padding: 0 10px;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        padding: 8px 0;
+        border-radius: 0 0 10px 10px;
+    }
+
+    .navbar .nav-item {
+        padding: 8px 12px;
+        margin: 4px;
+        font-size: 0.95em;
+    }
+
+    h2, h3 {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+    }
+    h3 {
+        font-size: 1.1em;
+    }
+
+    .card {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .emoji-card span {
+        font-size: 3em;
+        margin: 0 10px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .btn {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+    .btn {
+        margin-right: 5px;
+        padding: 8px 15px;
+    }
+    .btn:last-child {
+        margin-right: 0;
+    }
+
+    /* Tabel di mobile: Menyamping (horizontal scroll) */
+    table {
+        min-width: 550px; /* Minimal lebar tabel di mobile agar scroll horizontal aktif */
+        width: 100%; /* Agar tabel mencoba mengisi lebar kontainer */
+        table-layout: auto; /* Kolom menyesuaikan konten */
+    }
+
+    table th, table td {
+        white-space: nowrap; /* Teks tidak memisah baris agar tabel bisa di-scroll */
+        padding: 8px 10px; /* Padding lebih kecil di mobile */
+        font-size: 0.85em; /* Font sedikit lebih kecil di mobile */
+    }
+    
+    /* Penyesuaian agar kontribusi cell lebih baik di mobile */
+    .contribution-cell {
+        flex-direction: row; /* Kembali ke baris */
+        align-items: center;
+        flex-wrap: nowrap; /* Jangan wrap */
+        justify-content: flex-start;
+        gap: 5px;
+    }
+    .contribution-cell input[type="number"] {
+        width: 70px;
+        padding: 4px;
+    }
+    .contribution-cell select {
+        width: 80px;
+        padding: 4px;
+    }
+    .contribution-cell .btn {
+        padding: 4px 8px;
+        font-size: 0.75em;
+        flex-grow: 0;
+        margin-left: auto;
+    }
+    
+    .progress-bar-container {
+        height: 15px;
+    }
+    .progress-text {
+        font-size: 0.75em;
+    }
+
+    .chart-card {
+        height: 250px;
+    }
+
+    /* Form Kontribusi di mobile - lebarkan penuh */
+    .contribution-form-card .form-group select,
+    .contribution-form-card .form-group input[type="number"],
+    .contribution-form-card .btn {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Kartu di mobile */
+    .parts-cards-container {
+        grid-template-columns: 1fr;
+    }
+    .part-card {
+        padding: 15px;
+    }
+    .part-card h4 {
+        font-size: 1.2em;
+    }
+    .part-card p {
+        font-size: 0.9em;
+    }
+    .part-card-actions {
+        justify-content: space-around;
+        gap: 5px;
+    }
+    .part-card-actions .action-btn {
+        flex-grow: 1;
+    }
+
+    /* Ringkasan kontribusi individu di mobile */
+    .individual-summary p {
+        font-size: 1em;
+        padding: 5px 10px;
+    }
+    .individual-summary p:last-child {
+        font-size: 1.1em;
+    }
+}
+
+/* Responsive untuk layar sangat kecil (misal: iPhone SE) */
+@media (max-width: 400px) {
+    .navbar .nav-item {
+        padding: 6px 10px;
+        margin: 3px;
+        font-size: 0.85em;
+    }
+    .btn {
+        padding: 6px 12px;
+        font-size: 0.8em;
+    }
+}
